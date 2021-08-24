@@ -7,7 +7,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
-    int x = 200, y = 200;
+    Tank myTank = new Tank(200,200,Dir.DOWN);
+    Bullet b = new Bullet(300,300,Dir.DOWN);
+
     public TankFrame() {
         setSize(800,600);
         setResizable(false);
@@ -26,14 +28,12 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics g) {
-        g.fillRect(x,y,50,50);
-//        x += 10;
-//        y += 10;
-//        System.out.println(x + " / " + y);
+        myTank.paint(g);    //把画笔传递给tank类
+        b.paint(g);
     }
 
     class MyKeyListener extends KeyAdapter {
-        //辅助确定左上、左下、右上、右下的方向
+        //确定上下左右
         boolean bL = false;
         boolean bU = false;
         boolean bR = false;
@@ -58,6 +58,7 @@ public class TankFrame extends Frame {
                 default:
                     break;
             }
+            setMainTankDir();
         }
 
         @Override
@@ -78,6 +79,18 @@ public class TankFrame extends Frame {
                     break;
                 default:
                     break;
+            }
+            setMainTankDir();
+        }
+        //确定坦克方向
+        private void setMainTankDir() {
+            if(!bL && !bR && !bU && !bD) myTank.setMoving(false);
+            else {
+                myTank.setMoving(true);
+                if (bL) myTank.setDir(Dir.LEFT);
+                if (bR) myTank.setDir(Dir.RIGHT);
+                if (bU) myTank.setDir(Dir.UP);
+                if (bD) myTank.setDir(Dir.DOWN);
             }
         }
     }
