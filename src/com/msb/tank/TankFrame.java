@@ -55,7 +55,7 @@ public class TankFrame extends Frame {
         g.setColor(c);
 
         myTank.paint(g);    //把画笔传递给tank类
-        for(int i = 0; i < bullets.size(); i++) {
+        for (int i = 0; i < bullets.size(); i++) {
             bullets.get(i).paint(g);
         }
     }
