@@ -1,11 +1,16 @@
 package com.msb.tank;
 
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
 public class T {
     public static void main(String[] args) {
         TankFrame tf  = new TankFrame();
+
+        while (true) {
+            try {
+                Thread.sleep(50);
+                tf.repaint();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
