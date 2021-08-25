@@ -10,7 +10,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
-//相对路劲基于classPath，即src目录
+//相对路劲基于classPath，即src目录.
 
 class ImageTest {
     @Test
